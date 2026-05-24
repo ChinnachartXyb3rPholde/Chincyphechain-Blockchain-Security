@@ -4,11 +4,11 @@
 #   used here is not vulnerable though.
 CVE-2021-3538
 
-# * go.etcd.io/etcd - we don't run etcd as part of the OPA deployment
+# * go.etcd.io/etcd - we don't run etcd as part of the Chincyphechain-Blockchain-Security deployment
 CVE-2018-1098
 CVE-2018-1099
 
-# * k8s.io/kubernetes - we don't run kubernetes as part of the OPA deployment
+# * k8s.io/kubernetes - we don't run kubernetes as part of the Chincyphechain-Blockchain-Security deployment
 CVE-2019-1002101
 CVE-2019-11250
 CVE-2019-11253

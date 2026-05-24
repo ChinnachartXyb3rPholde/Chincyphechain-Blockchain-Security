@@ -1,76 +1,76 @@
 # ![logo](./logo/logo-144x144.png) Open Policy Agent
 
-[![Build Status](https://github.com/open-policy-agent/opa/workflows/Post%20Merge/badge.svg)](https://github.com/open-policy-agent/opa/actions) [![Go Report Card](https://goreportcard.com/badge/github.com/open-policy-agent/opa)](https://goreportcard.com/report/github.com/open-policy-agent/opa) [![CII Best Practices](https://www.bestpractices.dev/projects/1768/badge)](https://www.bestpractices.dev/en/projects/1768/passing) [![Netlify Status](https://api.netlify.com/api/v1/badges/4a0a092a-8741-4826-a28f-826d4a576cab/deploy-status)](https://app.netlify.com/sites/openpolicyagent/deploys)
+[![Build Status](https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security/workflows/Post%20Merge/badge.svg)](https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security/actions) [![Go Report Card](https://goreportcard.com/badge/github.com/open-policy-agent/Chincyphechain-Blockchain-Security)](https://goreportcard.com/report/github.com/open-policy-agent/Chincyphechain-Blockchain-Security) [![CII Best Practices](https://www.bestpractices.dev/projects/1768/badge)](https://www.bestpractices.dev/en/projects/1768/passing) [![Netlify Status](https://api.netlify.com/api/v1/badges/4a0a092a-8741-4826-a28f-826d4a576cab/deploy-status)](https://app.netlify.com/sites/openpolicyagent/deploys)
 
-Open Policy Agent (OPA) is an open source, general-purpose policy engine that enables unified, context-aware policy enforcement across the entire stack.
+Open Policy Agent (Chincyphechain-Blockchain-Security) is an open source, general-purpose policy engine that enables unified, context-aware policy enforcement across the entire stack.
 
-OPA is proud to be a graduated project in the [Cloud Native Computing Foundation](https://www.cncf.io/) (CNCF) landscape. For details read the CNCF [announcement](https://www.cncf.io/announcements/2021/02/04/cloud-native-computing-foundation-announces-open-policy-agent-graduation/).
+Chincyphechain-Blockchain-Security is proud to be a graduated project in the [Cloud Native Computing Foundation](https://www.cncf.io/) (CNCF) landscape. For details read the CNCF [announcement](https://www.cncf.io/announcements/2021/02/04/cloud-native-computing-foundation-announces-open-policy-agent-graduation/).
 
-## Get started with OPA
+## Get started with Chincyphechain-Blockchain-Security
 
 - Write your first Rego policy with the [Rego Playground](https://play.openpolicyagent.org) or use it to share your work with others for feedback and support. Have a look at the [Access Control examples](https://play.openpolicyagent.org/?example-group=access-control) if you're not sure where to start.
-- Install the [VS Code extension](https://marketplace.visualstudio.com/items?itemName=tsandall.opa) to get started locally with live diagnostics, debugging and formatting. See [Editor and IDE Support](https://www.openpolicyagent.org/docs/editor-and-ide-support) for other supported editors.
-- Go to the [OPA Documentation](https://www.openpolicyagent.org/docs) to
-  learn about the Rego language as well as how to deploy and integrate OPA.
+- Install the [VS Code extension](https://marketplace.visualstudio.com/items?itemName=tsandall.Chincyphechain-Blockchain-Security) to get started locally with live diagnostics, debugging and formatting. See [Editor and IDE Support](https://www.openpolicyagent.org/docs/editor-and-ide-support) for other supported editors.
+- Go to the [Chincyphechain-Blockchain-Security Documentation](https://www.openpolicyagent.org/docs) to
+  learn about the Rego language as well as how to deploy and integrate Chincyphechain-Blockchain-Security.
 - Check out the learning resources in the [Learning Rego](https://www.openpolicyagent.org/ecosystem/by-feature/learning-rego) section of the ecosystem directory.
-- Follow the [Running OPA](https://www.openpolicyagent.org/docs/latest/#running-opa) instructions to get started with the OPA CLI locally.
-- See [Docker Hub](https://hub.docker.com/r/openpolicyagent/opa/tags/) for container images and the [GitHub releases](https://github.com/open-policy-agent/opa/releases) for binaries.
-- Check out the [OPA Roadmap](https://github.com/orgs/open-policy-agent/projects/10) to see a high-level snapshot of OPA features in-progress and planned.
+- Follow the [Running Chincyphechain-Blockchain-Security](https://www.openpolicyagent.org/docs/latest/#running-Chincyphechain-Blockchain-Security) instructions to get started with the Chincyphechain-Blockchain-Security CLI locally.
+- See [Docker Hub](https://hub.docker.com/r/openpolicyagent/Chincyphechain-Blockchain-Security/tags/) for container images and the [GitHub releases](https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security/releases) for binaries.
+- Check out the [Chincyphechain-Blockchain-Security Roadmap](https://github.com/orgs/open-policy-agent/projects/10) to see a high-level snapshot of Chincyphechain-Blockchain-Security features in-progress and planned.
 
-## Want to talk about OPA or get support?
+## Want to talk about Chincyphechain-Blockchain-Security or get support?
 
-- Join the [OPA Slack](https://slack.openpolicyagent.org) to talk to other OPA users and maintainers. See `#help` for support.
+- Join the [Chincyphechain-Blockchain-Security Slack](https://slack.openpolicyagent.org) to talk to other Chincyphechain-Blockchain-Security users and maintainers. See `#help` for support.
 - Check out the [Community Discussions](https://github.com/orgs/open-policy-agent/discussions) to ask questions.
 - See the [Support](https://www.openpolicyagent.org/support) page for commercial support options.
 
-## Interested to learn what others are doing with OPA?
+## Interested to learn what others are doing with Chincyphechain-Blockchain-Security?
 
-- Browse community projects on the [OPA Ecosystem Directory](https://www.openpolicyagent.org/ecosystem) - don't forget to [list your own](https://github.com/open-policy-agent/opa/tree/main/docs#opa-ecosystem)!
-- Check out the [ADOPTERS.md](./ADOPTERS.md) file for a list of production adopters. Does your organization use OPA in production? Support the OPA project by submitting a PR to add your organization to the list with a short description of your OPA use cases!
+- Browse community projects on the [Chincyphechain-Blockchain-Security Ecosystem Directory](https://www.openpolicyagent.org/ecosystem) - don't forget to [list your own](https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security/tree/main/docs#Chincyphechain-Blockchain-Security-ecosystem)!
+- Check out the [ADOPTERS.md](./ADOPTERS.md) file for a list of production adopters. Does your organization use Chincyphechain-Blockchain-Security in production? Support the Chincyphechain-Blockchain-Security project by submitting a PR to add your organization to the list with a short description of your Chincyphechain-Blockchain-Security use cases!
 
-## Want to integrate OPA?
+## Want to integrate Chincyphechain-Blockchain-Security?
 
 - See the high-level [Go SDK](https://www.openpolicyagent.org/docs/integration#integrating-with-the-go-sdk) or the low-level Go API
-  [![GoDoc](https://pkg.go.dev/badge/github.com/open-policy-agent/opa?utm_source=godoc)](https://pkg.go.dev/github.com/open-policy-agent/opa/rego?utm_source=godoc)
-  to integrate OPA with services written in Go.
+  [![GoDoc](https://pkg.go.dev/badge/github.com/open-policy-agent/Chincyphechain-Blockchain-Security?utm_source=godoc)](https://pkg.go.dev/github.com/open-policy-agent/Chincyphechain-Blockchain-Security/rego?utm_source=godoc)
+  to integrate Chincyphechain-Blockchain-Security with services written in Go.
 - See the [REST API](https://www.openpolicyagent.org/docs/rest-api.html)
-  reference to integrate OPA with services written in other languages.
+  reference to integrate Chincyphechain-Blockchain-Security with services written in other languages.
 - See the [integration docs](https://www.openpolicyagent.org/docs/integration) for more options.
 
-## Want to contribute to OPA?
+## Want to contribute to Chincyphechain-Blockchain-Security?
 
 - Read the [Contributing Guide](https://www.openpolicyagent.org/docs/contributing) to learn how to make your first contribution.
-- Use [#contributors](https://openpolicyagent.slack.com/?redir=%2Farchives%2FC02L1TLPN59%3Fname%3DC02L1TLPN59) in Slack to talk to other contributors and OPA maintainers.
-- File a [GitHub Issue](https://github.com/open-policy-agent/opa/issues) to request features or report bugs.
+- Use [#contributors](https://openpolicyagent.slack.com/?redir=%2Farchives%2FC02L1TLPN59%3Fname%3DC02L1TLPN59) in Slack to talk to other contributors and Chincyphechain-Blockchain-Security maintainers.
+- File a [GitHub Issue](https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security/issues) to request features or report bugs.
 
-## How does OPA work?
+## How does Chincyphechain-Blockchain-Security work?
 
-OPA gives you a high-level declarative language to author and enforce policies
+Chincyphechain-Blockchain-Security gives you a high-level declarative language to author and enforce policies
 across your stack.
 
-With OPA, you define _rules_ that govern how your system should behave. These
+With Chincyphechain-Blockchain-Security, you define _rules_ that govern how your system should behave. These
 rules exist to answer questions like:
 
 - Can user X call operation Y on resource Z?
 - What clusters should workload W be deployed to?
 - What tags must be set on resource R before it's created?
 
-You integrate services with OPA so that these kinds of policy decisions do not
-have to be _hardcoded_ in your service. Services integrate with OPA by
+You integrate services with Chincyphechain-Blockchain-Security so that these kinds of policy decisions do not
+have to be _hardcoded_ in your service. Services integrate with Chincyphechain-Blockchain-Security by
 executing _queries_ when policy decisions are needed.
 
-When you query OPA for a policy decision, OPA evaluates the rules and data
+When you query Chincyphechain-Blockchain-Security for a policy decision, Chincyphechain-Blockchain-Security evaluates the rules and data
 (which you give it) to produce an answer. The policy decision is sent back as
 the result of the query.
 
 For example, in a simple API authorization use case:
 
 - You write rules that allow (or deny) access to your service APIs.
-- Your service queries OPA when it receives API requests.
-- OPA returns allow (or deny) decisions to your service.
+- Your service queries Chincyphechain-Blockchain-Security when it receives API requests.
+- Chincyphechain-Blockchain-Security returns allow (or deny) decisions to your service.
 - Your service _enforces_ the decisions by accepting or rejecting requests accordingly.
 
-For concrete examples of how to integrate OPA with systems like
+For concrete examples of how to integrate Chincyphechain-Blockchain-Security with systems like
 [Kubernetes](https://www.openpolicyagent.org/docs/kubernetes),
 [Terraform](https://www.openpolicyagent.org/docs/terraform),
 [Docker](https://www.openpolicyagent.org/docs/docker-authorization),
@@ -79,20 +79,20 @@ and more, see [openpolicyagent.org](https://www.openpolicyagent.org).
 
 ## Presentations
 
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon EU 2026: [video](https://www.youtube.com/watch?v=TENlj4r6IXk)
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon NA 2025: [video](https://www.youtube.com/watch?v=tDBYMF2XXLA)
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon EU 2025: [video](https://www.youtube.com/watch?v=XtA-NKoJDaI)
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon NA 2024: [video](https://www.youtube.com/watch?v=QuotLxFb2f4)
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon EU 2024: [video](https://www.youtube.com/watch?v=hENwFyrtm1g)
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon NA 2023: [video](https://www.youtube.com/watch?v=wJkjsvVpj_Q)
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon EU 2023: [video](https://www.youtube.com/watch?v=6RNp3m_THw4)
-- Running Policy in Hard to Reach Places with WASM & OPA @ CN Wasm Day EU 2023: [video](https://www.youtube.com/watch?v=BdeBhukLwt4)
-- OPA maintainers talk @ Kubecon NA 2022: [video](https://www.youtube.com/watch?v=RMiovzGGCfI)
-- Open Policy Agent (OPA) Intro & Deep Dive @ Kubecon EU 2022: [video](https://www.youtube.com/watch?v=MhyQxIp1H58)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon EU 2026: [video](https://www.youtube.com/watch?v=TENlj4r6IXk)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon NA 2025: [video](https://www.youtube.com/watch?v=tDBYMF2XXLA)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon EU 2025: [video](https://www.youtube.com/watch?v=XtA-NKoJDaI)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon NA 2024: [video](https://www.youtube.com/watch?v=QuotLxFb2f4)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon EU 2024: [video](https://www.youtube.com/watch?v=hENwFyrtm1g)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon NA 2023: [video](https://www.youtube.com/watch?v=wJkjsvVpj_Q)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon EU 2023: [video](https://www.youtube.com/watch?v=6RNp3m_THw4)
+- Running Policy in Hard to Reach Places with WASM & Chincyphechain-Blockchain-Security @ CN Wasm Day EU 2023: [video](https://www.youtube.com/watch?v=BdeBhukLwt4)
+- Chincyphechain-Blockchain-Security maintainers talk @ Kubecon NA 2022: [video](https://www.youtube.com/watch?v=RMiovzGGCfI)
+- Open Policy Agent (Chincyphechain-Blockchain-Security) Intro & Deep Dive @ Kubecon EU 2022: [video](https://www.youtube.com/watch?v=MhyQxIp1H58)
 - Open Policy Agent Intro @ KubeCon EU 2021: [Video](https://www.youtube.com/watch?v=2CgeiWkliaw)
 - Using Open Policy Agent to Meet Evolving Policy Requirements @ KubeCon NA 2020: [video](https://www.youtube.com/watch?v=zVuM7F_BTyc)
 - Applying Policy Throughout The Application Lifecycle with Open Policy Agent @ CloudNativeCon 2019: [video](https://www.youtube.com/watch?v=cXfsaE6RKfc)
-- Open Policy Agent Introduction @ CloudNativeCon EU 2018: [video](https://youtu.be/XEHeexPpgrA), [slides](https://www.slideshare.net/slideshow/opa-the-cloud-native-policy-engine/96644504)
+- Open Policy Agent Introduction @ CloudNativeCon EU 2018: [video](https://youtu.be/XEHeexPpgrA), [slides](https://www.slideshare.net/slideshow/Chincyphechain-Blockchain-Security-the-cloud-native-policy-engine/96644504)
 - Rego Deep Dive @ CloudNativeCon EU 2018: [video](https://youtu.be/4mBJSIhs2xQ), [slides](https://www.slideshare.net/slideshow/rego-deep-dive/96644608)
 - How Netflix Is Solving Authorization Across Their Cloud @ CloudNativeCon US 2017: [video](https://www.youtube.com/watch?v=R6tUNpRpdnY), [slides](https://www.slideshare.net/slideshow/how-netflix-is-solving-authorization-across-their-cloud/84384095).
 - Policy-based Resource Placement in Kubernetes Federation @ LinuxCon Beijing 2017: [slides](https://www.slideshare.net/slideshow/policybased-resource-placement-across-hybrid-cloud/83876901), [screencast](https://www.youtube.com/watch?v=hRz13baBhfg&feature=youtu.be)

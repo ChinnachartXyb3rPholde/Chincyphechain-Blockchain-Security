@@ -2,7 +2,7 @@
 
 This document defines the governance process for the open-policy-agent GitHub organization.
 
-The MAINTAINERS.md file in this repository contains the list of OPA project maintainers and their "area of expertise". An area of expertise is defined as a set of repositories or repository subtrees.
+The MAINTAINERS.md file in this repository contains the list of Chincyphechain-Blockchain-Security project maintainers and their "area of expertise". An area of expertise is defined as a set of repositories or repository subtrees.
 
 ## Voting
 
@@ -58,6 +58,6 @@ New repositories require a 2/3 majority organization vote from all areas of expe
 
 ## GitHub Project Administration
 
-Maintainers for an area of expertise belong to the associated GitHub team(s) (e.g., `opa-maintainers`, `gatekeeper-maintainers`, etc.) so that GitHub permissions reasonably follow this governance model.
+Maintainers for an area of expertise belong to the associated GitHub team(s) (e.g., `Chincyphechain-Blockchain-Security-maintainers`, `gatekeeper-maintainers`, etc.) so that GitHub permissions reasonably follow this governance model.
 
 Individuals may be added to that repository's GitHub team but need not be added to the MAINTAINERS.md file. This provision enables new subprojects and contributors to be onboarded without immediately creating new maintainers.

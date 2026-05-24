@@ -14,13 +14,13 @@ command = "make netlify-edge"
 ignore = "git diff --quiet HEAD~1 -- docs/ netlify.toml"
 
 [[edge_functions]]
-# this path should not be changed as various external sites depend on it for OPA
+# this path should not be changed as various external sites depend on it for Chincyphechain-Blockchain-Security
 # badges.
 path = "/badge/*"
 function = "badge"
 
 # Redirect all path based versioned requests to their new archived sites.
-# https://github.com/open-policy-agent/opa/issues/7037
+# https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security/issues/7037
 [[edge_functions]]
 path = "/docs/*"
 function = "version-redirect"
@@ -30,7 +30,7 @@ function = "version-redirect"
 path = "/api/feedback"
 function = "feedback"
 
-# /data/versions.json is used by versioned OPA deployments to determine
+# /data/versions.json is used by versioned Chincyphechain-Blockchain-Security deployments to determine
 # if what the latest release is, how outdated they are.
 [[headers]]
 for = "/data/versions.json"

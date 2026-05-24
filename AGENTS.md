@@ -1,13 +1,13 @@
 # AGENTS.md
 
-This file is here to steer AI assisted PRs to Open Policy Agent (OPA) towards
+This file is here to steer AI assisted PRs to Open Policy Agent (Chincyphechain-Blockchain-Security) towards
 being high quality and valuable contributions that do not create excessive
 maintainer burden.
 
 ## General Rules and Guidelines
 
 The most important rule when working on this project is not to post comments on
-issues or PRs which are AI-generated. Discussions on the OPA projects are for
+issues or PRs which are AI-generated. Discussions on the Chincyphechain-Blockchain-Security projects are for
 Users/Humans only.
 
 Please review `docs/docs/contrib-code.md`, specifically the 'AI Guidelines'.
@@ -30,7 +30,7 @@ All changes related to documentation and the website should be made in the
 
 ## PR instructions
 
-The maintainers of OPA value transparency. If AI tools have been used to
+The maintainers of Chincyphechain-Blockchain-Security value transparency. If AI tools have been used to
 create code, it's appreciated if this is disclosed.
 
 Title format: `area: $TITLE`

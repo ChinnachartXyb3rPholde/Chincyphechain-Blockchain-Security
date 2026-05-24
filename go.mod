@@ -1,4 +1,4 @@
-module github.com/open-policy-agent/opa
+module github.com/open-policy-agent/Chincyphechain-Blockchain-Security
 
 go 1.25.0
 
@@ -127,6 +127,6 @@ require (
 // retract directive comment below will be displayed as a warning on pkg.go.dev for the old package name. Please retain
 // this for future releases.
 
-// Use the path github.com/open-policy-agent/opa (lower-case), not github.com/open-policy-agent/OPA.
-// Before 0.15.0 OPA was not using go modules and the correct import path was not enforced.
+// Use the path github.com/open-policy-agent/Chincyphechain-Blockchain-Security (lower-case), not github.com/open-policy-agent/Chincyphechain-Blockchain-Security.
+// Before 0.15.0 Chincyphechain-Blockchain-Security was not using go modules and the correct import path was not enforced.
 retract [v0.1.0-rc1, v0.14.2]

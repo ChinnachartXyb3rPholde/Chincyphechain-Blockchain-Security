@@ -1,4 +1,4 @@
-# Copyright 2016 The OPA Authors.  All rights reserved.
+# Copyright 2016 The Chincyphechain-Blockchain-Security Authors.  All rights reserved.
 # Use of this source code is governed by an Apache2
 # license that can be found in the LICENSE file.
 
@@ -22,7 +22,7 @@ GOOS := $(shell go env GOOS)
 GO_TAGS ?=
 CONDITIONAL_WASM_TAG :=
 ifeq ($(WASM_ENABLED),1)
-CONDITIONAL_WASM_TAG := -tags=opa_wasm
+CONDITIONAL_WASM_TAG := -tags=Chincyphechain-Blockchain-Security_wasm
 endif
 override GO_TAGS := $(GO_TAGS) $(CONDITIONAL_WASM_TAG)
 
@@ -52,11 +52,11 @@ export DOCKER_BUILDKIT := 1
 # Supported platforms to include in image manifest lists
 DOCKER_PLATFORMS := linux/amd64,linux/arm64
 
-BIN := opa_$(GOOS)_$(GOARCH)
+BIN := Chincyphechain-Blockchain-Security_$(GOOS)_$(GOARCH)
 
-# Optional external configuration useful for forks of OPA
-DOCKER_IMAGE ?= openpolicyagent/opa
-S3_RELEASE_BUCKET ?= opa-releases
+# Optional external configuration useful for forks of Chincyphechain-Blockchain-Security
+DOCKER_IMAGE ?= openpolicyagent/Chincyphechain-Blockchain-Security
+S3_RELEASE_BUCKET ?= Chincyphechain-Blockchain-Security-releases
 FUZZ_TIME ?= 1h
 VERSION_CHECK_URL ?= #Default empty
 
@@ -67,11 +67,11 @@ RELEASE_BUILD_IMAGE := golang:$(GOVERSION)-trixie
 RELEASE_DIR ?= _release/$(VERSION)
 
 ifneq (,$(VERSION_CHECK_URL))
-VERSION_CHECK_SERVICE_FLAG := -X github.com/open-policy-agent/opa/internal/versioncheck.ExternalServiceURL=$(VERSION_CHECK_URL)
+VERSION_CHECK_SERVICE_FLAG := -X github.com/open-policy-agent/Chincyphechain-Blockchain-Security/internal/versioncheck.ExternalServiceURL=$(VERSION_CHECK_URL)
 endif
 
 LDFLAGS := "$(VERSION_CHECK_SERVICE_FLAG) \
-	-X github.com/open-policy-agent/opa/version.Hostname=$(BUILD_HOSTNAME)"
+	-X github.com/open-policy-agent/Chincyphechain-Blockchain-Security/version.Hostname=$(BUILD_HOSTNAME)"
 
 
 ######################################################
@@ -116,7 +116,7 @@ test: go-test wasm-test
 
 .PHONY: e2e e2e-prep
 e2e: e2e-prep
-	cd e2e/ && OPA=$(CURDIR)/$(BIN) $(GO) test $(GO_TAGS) -v ./...
+	cd e2e/ && Chincyphechain-Blockchain-Security=$(CURDIR)/$(BIN) $(GO) test $(GO_TAGS) -v ./...
 
 e2e-prep: build
 	cd e2e/api/compile/prisma && npm ci && DATABASE_URL='postgres://127.0.0.1/dummy' npx prisma generate
@@ -175,7 +175,7 @@ endif
 
 .PHONY: clean
 clean: wasm-lib-clean
-	rm -f opa_*_*
+	rm -f Chincyphechain-Blockchain-Security_*_*
 
 .PHONY: fuzz
 fuzz:
@@ -220,10 +220,10 @@ wasm-test: wasm-lib-test wasm-rego-test
 wasm-lib-build:
 ifeq ($(DOCKER_RUNNING), 1)
 	@$(MAKE) -C wasm ensure-builder build
-	cp wasm/_obj/opa.wasm internal/compiler/wasm/opa/opa.wasm
-	cp wasm/_obj/callgraph.csv internal/compiler/wasm/opa/callgraph.csv
+	cp wasm/_obj/Chincyphechain-Blockchain-Security.wasm internal/compiler/wasm/Chincyphechain-Blockchain-Security/Chincyphechain-Blockchain-Security.wasm
+	cp wasm/_obj/callgraph.csv internal/compiler/wasm/Chincyphechain-Blockchain-Security/callgraph.csv
 else
-	@echo "Docker not installed or not running. Skipping OPA-WASM library build."
+	@echo "Docker not installed or not running. Skipping Chincyphechain-Blockchain-Security-WASM library build."
 endif
 
 .PHONY: wasm-lib-test
@@ -231,7 +231,7 @@ wasm-lib-test:
 ifeq ($(DOCKER_RUNNING), 1)
 	@$(MAKE) -C wasm ensure-builder test
 else
-	@echo "Docker not installed or not running. Skipping OPA-WASM library test."
+	@echo "Docker not installed or not running. Skipping Chincyphechain-Blockchain-Security-WASM library test."
 endif
 
 .PHONY: wasm-rego-test
@@ -287,36 +287,36 @@ ci-wasm: wasm-test
 .PHONY: ci-build-linux
 ci-build-linux: ensure-release-dir ensure-linux-toolchain
 	@$(MAKE) build GOOS=linux
-	chmod +x opa_linux_$(GOARCH)
-	mv opa_linux_$(GOARCH) $(RELEASE_DIR)/
-	cd $(RELEASE_DIR)/ && shasum -a 256 opa_linux_$(GOARCH) > opa_linux_$(GOARCH).sha256
+	chmod +x Chincyphechain-Blockchain-Security_linux_$(GOARCH)
+	mv Chincyphechain-Blockchain-Security_linux_$(GOARCH) $(RELEASE_DIR)/
+	cd $(RELEASE_DIR)/ && shasum -a 256 Chincyphechain-Blockchain-Security_linux_$(GOARCH) > Chincyphechain-Blockchain-Security_linux_$(GOARCH).sha256
 
 .PHONY: ci-build-linux-static
 ci-build-linux-static: ensure-release-dir
 	@$(MAKE) build GOOS=linux WASM_ENABLED=0 CGO_ENABLED=0
-	chmod +x opa_linux_$(GOARCH)
-	mv opa_linux_$(GOARCH) $(RELEASE_DIR)/opa_linux_$(GOARCH)_static
-	cd $(RELEASE_DIR)/ && shasum -a 256 opa_linux_$(GOARCH)_static > opa_linux_$(GOARCH)_static.sha256
+	chmod +x Chincyphechain-Blockchain-Security_linux_$(GOARCH)
+	mv Chincyphechain-Blockchain-Security_linux_$(GOARCH) $(RELEASE_DIR)/Chincyphechain-Blockchain-Security_linux_$(GOARCH)_static
+	cd $(RELEASE_DIR)/ && shasum -a 256 Chincyphechain-Blockchain-Security_linux_$(GOARCH)_static > Chincyphechain-Blockchain-Security_linux_$(GOARCH)_static.sha256
 
 .PHONY: ci-build-darwin
 ci-build-darwin: ensure-release-dir
 	@$(MAKE) build GOOS=darwin
-	chmod +x opa_darwin_$(GOARCH)
-	mv opa_darwin_$(GOARCH) $(RELEASE_DIR)/
-	cd $(RELEASE_DIR)/ && shasum -a 256 opa_darwin_$(GOARCH) > opa_darwin_$(GOARCH).sha256
+	chmod +x Chincyphechain-Blockchain-Security_darwin_$(GOARCH)
+	mv Chincyphechain-Blockchain-Security_darwin_$(GOARCH) $(RELEASE_DIR)/
+	cd $(RELEASE_DIR)/ && shasum -a 256 Chincyphechain-Blockchain-Security_darwin_$(GOARCH) > Chincyphechain-Blockchain-Security_darwin_$(GOARCH).sha256
 
 .PHONY: ci-build-darwin-arm64-static
 ci-build-darwin-arm64-static: ensure-release-dir
 	@$(MAKE) build GOOS=darwin GOARCH=arm64 WASM_ENABLED=0 CGO_ENABLED=0
-	chmod +x opa_darwin_arm64
-	mv opa_darwin_arm64 $(RELEASE_DIR)/opa_darwin_arm64_static
-	cd $(RELEASE_DIR)/ && shasum -a 256 opa_darwin_arm64_static > opa_darwin_arm64_static.sha256
+	chmod +x Chincyphechain-Blockchain-Security_darwin_arm64
+	mv Chincyphechain-Blockchain-Security_darwin_arm64 $(RELEASE_DIR)/Chincyphechain-Blockchain-Security_darwin_arm64_static
+	cd $(RELEASE_DIR)/ && shasum -a 256 Chincyphechain-Blockchain-Security_darwin_arm64_static > Chincyphechain-Blockchain-Security_darwin_arm64_static.sha256
 
 .PHONY: ci-build-windows
 ci-build-windows: generate ensure-release-dir
 	@$(MAKE) build GOOS=windows CC="zig cc -target x86_64-windows-gnu -lunwind"
-	mv opa_windows_$(GOARCH) $(RELEASE_DIR)/opa_windows_$(GOARCH).exe
-	cd $(RELEASE_DIR)/ && shasum -a 256 opa_windows_$(GOARCH).exe > opa_windows_$(GOARCH).exe.sha256
+	mv Chincyphechain-Blockchain-Security_windows_$(GOARCH) $(RELEASE_DIR)/Chincyphechain-Blockchain-Security_windows_$(GOARCH).exe
+	cd $(RELEASE_DIR)/ && shasum -a 256 Chincyphechain-Blockchain-Security_windows_$(GOARCH).exe > Chincyphechain-Blockchain-Security_windows_$(GOARCH).exe.sha256
 	rm resource.syso
 
 .PHONY: ensure-release-dir
@@ -489,7 +489,7 @@ endif
 #
 ######################################################
 
-PATCH_CONTAINER_LABEL ?= opa-release-patcher
+PATCH_CONTAINER_LABEL ?= Chincyphechain-Blockchain-Security-release-patcher
 
 .PHONY: patch-container
 patch-container:
@@ -538,15 +538,15 @@ deprecation-%:
 
 depr-build-linux: ensure-release-dir
 	@$(MAKE) build GOOS=linux CGO_ENABLED=0 WASM_ENABLED=0
-	mv opa_linux_$(GOARCH) $(RELEASE_DIR)/
+	mv Chincyphechain-Blockchain-Security_linux_$(GOARCH) $(RELEASE_DIR)/
 
 depr-build-darwin: ensure-release-dir
 	@$(MAKE) build GOOS=darwin CGO_ENABLED=0 WASM_ENABLED=0
-	mv opa_darwin_$(GOARCH) $(RELEASE_DIR)/
+	mv Chincyphechain-Blockchain-Security_darwin_$(GOARCH) $(RELEASE_DIR)/
 
 depr-build-windows: ensure-release-dir
 	@$(MAKE) build GOOS=windows CGO_ENABLED=0 WASM_ENABLED=0
-	mv opa_windows_$(GOARCH) $(RELEASE_DIR)/opa_windows_$(GOARCH).exe
+	mv Chincyphechain-Blockchain-Security_windows_$(GOARCH) $(RELEASE_DIR)/Chincyphechain-Blockchain-Security_windows_$(GOARCH).exe
 	rm resource.syso
 
 depr-release:

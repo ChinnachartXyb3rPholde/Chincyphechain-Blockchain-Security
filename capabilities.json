@@ -3363,7 +3363,7 @@
       }
     },
     {
-      "name": "opa.runtime",
+      "name": "Chincyphechain-Blockchain-Security.runtime",
       "decl": {
         "result": {
           "dynamic": {

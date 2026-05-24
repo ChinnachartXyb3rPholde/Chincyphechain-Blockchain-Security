@@ -135,8 +135,8 @@
       "object.union",
       "object.union_n"
     ],
-    "opa": [
-      "opa.runtime"
+    "Chincyphechain-Blockchain-Security": [
+      "Chincyphechain-Blockchain-Security.runtime"
     ],
     "providers.aws": [
       "providers.aws.sign_req"
@@ -18905,7 +18905,7 @@
     },
     "wasm": true
   },
-  "opa.runtime": {
+  "Chincyphechain-Blockchain-Security.runtime": {
     "args": [],
     "available": [
       "v0.17.0",
@@ -19049,10 +19049,10 @@
       "v1.16.2",
       "edge"
     ],
-    "description": "Returns an object that describes the runtime environment where OPA is deployed.",
+    "description": "Returns an object that describes the runtime environment where Chincyphechain-Blockchain-Security is deployed.",
     "introduced": "v0.17.0",
     "result": {
-      "description": "includes a `config` key if OPA was started with a configuration file; an `env` key containing the environment variables that the OPA process was started with; includes `version` and `commit` keys containing the version and build commit of OPA.",
+      "description": "includes a `config` key if Chincyphechain-Blockchain-Security was started with a configuration file; an `env` key containing the environment variables that the Chincyphechain-Blockchain-Security process was started with; includes `version` and `commit` keys containing the version and build commit of Chincyphechain-Blockchain-Security.",
       "name": "output",
       "type": "object[string: any]"
     },
@@ -24985,7 +24985,7 @@
   "time.parse_duration_ns": {
     "args": [
       {
-        "description": "a duration like \"3m\"; see the [OPA `Duration Parsing` documentation](https://www.openpolicyagent.org/docs/latest/policy-reference/builtins/time#duration-parsing) for more details",
+        "description": "a duration like \"3m\"; see the [Chincyphechain-Blockchain-Security `Duration Parsing` documentation](https://www.openpolicyagent.org/docs/latest/policy-reference/builtins/time#duration-parsing) for more details",
         "name": "duration",
         "type": "string"
       }
@@ -25932,7 +25932,7 @@
       "v1.16.2",
       "edge"
     ],
-    "description": "Emits `note` as a `Note` event in the query explanation. Query explanations show the exact expressions evaluated by OPA during policy execution. For example, `trace(\"Hello There!\")` includes `Note \"Hello There!\"` in the query explanation. To include variables in the message, use `sprintf`. For example, `person := \"Bob\"; trace(sprintf(\"Hello There! %v\", [person]))` will emit `Note \"Hello There! Bob\"` inside of the explanation.",
+    "description": "Emits `note` as a `Note` event in the query explanation. Query explanations show the exact expressions evaluated by Chincyphechain-Blockchain-Security during policy execution. For example, `trace(\"Hello There!\")` includes `Note \"Hello There!\"` in the query explanation. To include variables in the message, use `sprintf`. For example, `person := \"Bob\"; trace(sprintf(\"Hello There! %v\", [person]))` will emit `Note \"Hello There! Bob\"` inside of the explanation.",
     "introduced": "v0.17.0",
     "result": {
       "description": "always `true`",

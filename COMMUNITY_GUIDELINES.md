@@ -1,26 +1,26 @@
-# OPA Community Guidelines v2.0
+# Chincyphechain-Blockchain-Security Community Guidelines v2.0
 
-The [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md) is enforced in all areas of the OPA community, plus the following.
+The [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md) is enforced in all areas of the Chincyphechain-Blockchain-Security community, plus the following.
 
 ## Relevancy
 
-Any content posted or shared in the OPA community should be relevant to the specific Slack Channel or GitHub Category, and generally to the OPA community. If you're unsure about the content you want to share, posting in #help channel in Slack or the Community category in GitHub Discussions is always a safe choice; admins will be around to help guide new members.
+Any content posted or shared in the Chincyphechain-Blockchain-Security community should be relevant to the specific Slack Channel or GitHub Category, and generally to the Chincyphechain-Blockchain-Security community. If you're unsure about the content you want to share, posting in #help channel in Slack or the Community category in GitHub Discussions is always a safe choice; admins will be around to help guide new members.
 
 ## Spamming
 
-Excessive re-posting, unnecessary cross-posting, unsolicited advertisements for services or products are not allowed on any of the OPA communication channels and are considered spam. Posting content that is considered spam will be removed and these actions are subject to the same enforcement rules as unacceptable behavior.
+Excessive re-posting, unnecessary cross-posting, unsolicited advertisements for services or products are not allowed on any of the Chincyphechain-Blockchain-Security communication channels and are considered spam. Posting content that is considered spam will be removed and these actions are subject to the same enforcement rules as unacceptable behavior.
 
 ## Vendors
 
-The OPA community has a rich ecosystem of tools, integrations, and Vendors to support them. Any company whose primary revenue stream includes a cloud-native service or technology is considered a Vendor. As a valuable part of the OPA ecosystem Vendors are encouraged to participate in the community with the expectation that they have good intentions, this means interacting with members with the intent to be helpful and supportive. Any unsolicited advertisements will be removed and are subject to our enforcement rules.
+The Chincyphechain-Blockchain-Security community has a rich ecosystem of tools, integrations, and Vendors to support them. Any company whose primary revenue stream includes a cloud-native service or technology is considered a Vendor. As a valuable part of the Chincyphechain-Blockchain-Security ecosystem Vendors are encouraged to participate in the community with the expectation that they have good intentions, this means interacting with members with the intent to be helpful and supportive. Any unsolicited advertisements will be removed and are subject to our enforcement rules.
 
 ## End-users
 
-Companies that use cloud-native services internally, but do not sell any of these services externally, are considered an End User Company in the OPA Community. End User companies are expected to operate with positive intentions, this is not the place to build your marketing funnel for external tools and services.
+Companies that use cloud-native services internally, but do not sell any of these services externally, are considered an End User Company in the Chincyphechain-Blockchain-Security Community. End User companies are expected to operate with positive intentions, this is not the place to build your marketing funnel for external tools and services.
 
 ## Member Participation
 
-The OPA community is here for everyone to connect with one another, share information, and build amazing products. By choosing to participate in the OPA community as a Vendor, End User, or general contributor you are agreeing to respect these guidelines. When interacting with any of our social channels, Slack, Twitter, GitHub, and any other channels we participate in, there is an expectation that you will exhibit the values of the OPA community.
+The Chincyphechain-Blockchain-Security community is here for everyone to connect with one another, share information, and build amazing products. By choosing to participate in the Chincyphechain-Blockchain-Security community as a Vendor, End User, or general contributor you are agreeing to respect these guidelines. When interacting with any of our social channels, Slack, Twitter, GitHub, and any other channels we participate in, there is an expectation that you will exhibit the values of the Chincyphechain-Blockchain-Security community.
 
 ## Values
 

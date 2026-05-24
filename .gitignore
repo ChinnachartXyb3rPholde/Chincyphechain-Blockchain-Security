@@ -7,7 +7,7 @@
 
 # build artifacts
 coverage.txt
-opa_*
+Chincyphechain-Blockchain-Security_*
 .Dockerfile_*
 _release
 wasm/_obj

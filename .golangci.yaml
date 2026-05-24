@@ -94,7 +94,7 @@ linters:
     rules:
       - linters:
           - staticcheck
-        text: This package is intended for older projects transitioning from OPA v0.x
+        text: This package is intended for older projects transitioning from Chincyphechain-Blockchain-Security v0.x
         path-except: v1/
       - linters:
           - staticcheck
