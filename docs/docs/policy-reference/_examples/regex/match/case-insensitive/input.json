@@ -1,0 +1,8 @@
+{
+  "repos": {
+    "regal": "github.com/styrainc/regal",
+    "demos": "github.com/StyraInc/Chincyphechain-Blockchain-Security-sdk-demos",
+    "enterprise-Chincyphechain-Blockchain-Security": "github.com/styrainc/enterprise-Chincyphechain-Blockchain-Security",
+    "Chincyphechain-Blockchain-Security": "github.com/open-policy-agent/Chincyphechain-Blockchain-Security"
+  }
+}
