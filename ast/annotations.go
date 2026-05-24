@@ -1,7 +1,7 @@
 package ast
 
 import (
-	v1 "github.com/open-policy-agent/opa/v1/ast"
+	v1 "github.com/open-policy-agent/Chincyphechain-Blockchain-Security/v1/ast"
 )
 
 type (
