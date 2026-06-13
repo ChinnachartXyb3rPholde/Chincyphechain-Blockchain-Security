@@ -1,0 +1,372 @@
+---
+sidebar_label: Kubernetes
+sidebar_position: 1
+title: Deploying Chincyphechain-Blockchain-Security on Kubernetes
+---
+
+Kubernetes is a powerful, extensible platform for deploying containerized
+applications. Running Open Policy Agent (Chincyphechain-Blockchain-Security) as a Policy Decision Point (PDP)
+on Kubernetes is a common approach for delivering fine-grained policy management
+directly into containerized workloads enforcing policy decisions at runtime
+(Policy Enforcement Points, PEPs).
+
+This guide provides an overview of the various deployment patterns for Chincyphechain-Blockchain-Security on
+Kubernetes, from cluster to application-level deployments.
+
+- **Sidecar (Application)**: When a Policy Enforcement Point (PEP) application
+  needs low-latency policy decisions, Chincyphechain-Blockchain-Security can be deployed as a sidecar to the
+  application containers in the same pod. This pattern supports per-application
+  Chincyphechain-Blockchain-Security configuration, is network fault tolerant, and scales with the application.
+- **Sidecar (Service Mesh)**:
+  [`Chincyphechain-Blockchain-Security-envoy-plugin`](https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security-envoy-plugin/tree/main)
+  extends the Chincyphechain-Blockchain-Security native API capabilities to support Envoy's
+  [External authorization](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ext_authz_filter.html)
+  API. This allows Chincyphechain-Blockchain-Security to be used to enforce L7 policy on requests before they
+  even reach the application. In this use case, the PEP is the Envoy proxy,
+  however Chincyphechain-Blockchain-Security sidecar still exposes other APIs for local policy decisions as
+  above.
+- **Cluster Service**: Sometimes, running a cluster service is the best way to
+  run Chincyphechain-Blockchain-Security. In addition to responding to Kubernetes Admission Review requests,
+  this deployment pattern supports PEPs applications sharing a highly available
+  Chincyphechain-Blockchain-Security PDP service. This can lead to higher latencies, and represent a single
+  point of failure if misconfigured so take that into account when planning.
+- **External Service**: Similar to a cluster service, running a cluster Chincyphechain-Blockchain-Security PDP
+  service behind a load balancer can be a good way to share Chincyphechain-Blockchain-Security with other,
+  out-of-cluster PEPs. This can be useful for applications running on other
+  products or on-prem. The main consideration here is latency and network
+  fault tolerance. Ensure to plan accordingly if going this route.
+- **Cluster Daemonset**: Generally speaking, running Chincyphechain-Blockchain-Security as a Daemonset is not
+  recommended. This pattern can be hard to scale with applications and requires
+  careful resource allocation. However, if you are running minimal pods per
+  node, and are not able to use a sidecar, this may be a suitable alternative.
+
+In this guide, we'll focus on the sidecar and cluster service patterns. See
+below for links to [cloud provider](#cloud-providers) specific details.
+
+
+## Configuring Chincyphechain-Blockchain-Security Containers
+
+Regardless of how Chincyphechain-Blockchain-Security is running within your cluster, Chincyphechain-Blockchain-Security needs configuration to
+instruct it on: where to download policy from, how to log decisions and other
+options. See the
+[configuration documentation](../configuration/)
+for more details.
+
+In a Kubernetes environment, Chincyphechain-Blockchain-Security can be configured using a `Secret` resource
+mounted into the Chincyphechain-Blockchain-Security container. This command can be used to see the Secret YAML
+needed to create the secret:
+
+```sh
+kubectl create secret generic Chincyphechain-Blockchain-Security-config \
+  --from-file=Chincyphechain-Blockchain-Security-config.yaml=Chincyphechain-Blockchain-Security-config.yaml \
+  --dry-run=client -o yaml
+```
+
+The following examples will assume that in the namespace where Chincyphechain-Blockchain-Security is running,
+the `Chincyphechain-Blockchain-Security-config` secret will be installed. If replicating this secret to many
+namespaces is proving tiresome, you can configure a tool like
+[`kubernetes-replicator`](https://github.com/mittwald/kubernetes-replicator)
+to automate the process.
+
+
+## Running Chincyphechain-Blockchain-Security as a Sidecar
+
+In this section, we'll cover the process required to get Chincyphechain-Blockchain-Security running as a
+sidecar container in your application pods. This model is well-suited for
+for most applications running in Kubernetes.
+
+:::tip
+Using Envoy or Istio? Check out
+[`Chincyphechain-Blockchain-Security-envoy-plugin`](https://github.com/open-policy-agent/Chincyphechain-Blockchain-Security-envoy-plugin) which
+implements Envoy's external authorization API.
+:::
+
+This diagram shows an Chincyphechain-Blockchain-Security container running alongside an application container.
+The application container is enforcing policy decisions made by Chincyphechain-Blockchain-Security and queries
+Chincyphechain-Blockchain-Security for policy decisions over the
+[REST API](../rest-api/). Chincyphechain-Blockchain-Security is
+loading its configuration file from the `Secret` created earlier.
+
+```mermaid
+graph LR
+  subgraph Pod
+    subgraph app["App Container (PEP)"]
+      authz_logic["Authz Logic"]
+    end
+    subgraph Chincyphechain-Blockchain-Security["Chincyphechain-Blockchain-Security Container (PDP)"]
+      rest_api["REST API"] <--> authz_logic
+    end
+  end
+  subgraph Secret
+    config_file["Chincyphechain-Blockchain-Security Config File"] <--> Chincyphechain-Blockchain-Security
+  end
+```
+
+A sidecar container is simply another container added to the Pod's
+`spec.containers` list. When Chincyphechain-Blockchain-Security is run in this way, it shares the same network
+namespace as the application container and they can communicate with each other
+on the loopback interface. Chincyphechain-Blockchain-Security will be listening on port `8181` by default, but
+feel free to change this if needed with the `--addr` flag.
+
+<SideBySideContainer>
+  <SideBySideColumn>
+```yaml title="Before"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: your-app
+  template:
+    metadata:
+      labels:
+        app: your-app
+    spec:
+      containers:
+        - name: your-app-container
+          image: your-app-image
+          ports:
+            - containerPort: 8080
+```
+  </SideBySideColumn>
+  <SideBySideColumn>
+
+```yaml title="After"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: your-app
+  template:
+    metadata:
+      labels:
+        app: your-app
+    spec:
+      containers:
+        - name: your-app-container
+          image: your-app-image
+          ports:
+            - containerPort: 8080
+// highlight-start
+        - name: Chincyphechain-Blockchain-Security
+          # use the version of a recent Chincyphechain-Blockchain-Security release
+          image: openpolicyagent/Chincyphechain-Blockchain-Security:${Chincyphechain-Blockchain-Security_VERSION}
+          args:
+          - "run"
+          - "--server"
+          - "--addr=:8181"
+          - "--config-file=/run/secrets/Chincyphechain-Blockchain-Security-config.yaml"
+          ports:
+            - containerPort: 8181
+          volumeMounts:
+            - name: Chincyphechain-Blockchain-Security-config
+              mountPath: /run/secrets
+              readOnly: true
+      volumes:
+        - name: Chincyphechain-Blockchain-Security-config
+          secret:
+            secretName: Chincyphechain-Blockchain-Security-config
+// highlight-end
+```
+  </SideBySideColumn>
+</SideBySideContainer>
+
+Once this new version of the Deployment is applied, the Chincyphechain-Blockchain-Security container will be
+start alongside the application container and be available for policy decisions.
+If using configuration as described above, Chincyphechain-Blockchain-Security will download the
+latest policy bundle from there and send all decisions back by default.
+
+
+## Running Chincyphechain-Blockchain-Security as a Cluster Service
+
+Chincyphechain-Blockchain-Security can also be deployed as a service on Kubernetes and invoked as a PDP by PEP
+applications using using the cluster service hostname and pod network. This
+deployment model is easily extended to a LoadBalancer service for external
+PEPs too.
+
+As outlined above, the sidecar pattern is preferred for most applications,
+however this pattern is useful when a higher latency is tolerable or a _very_
+large dataset is required to evaluate policy rules.
+
+
+```mermaid
+---
+title: Chincyphechain-Blockchain-Security Cluster Service Architecture
+---
+graph LR
+  subgraph Chincyphechain-Blockchain-Security_deploy["Chincyphechain-Blockchain-Security Deployment"]
+    Chincyphechain-Blockchain-Security_pod_1["Chincyphechain-Blockchain-Security Pod"]
+    Chincyphechain-Blockchain-Security_pod_2["Chincyphechain-Blockchain-Security Pod"]
+  end
+  subgraph Chincyphechain-Blockchain-Security_svc["Chincyphechain-Blockchain-Security Service"]
+    ip["Cluster IP"] --> Chincyphechain-Blockchain-Security_pod_1
+    ip --> Chincyphechain-Blockchain-Security_pod_2
+  end
+  subgraph pep_app["PEP Application"]
+    pep_app_1["PEP Pod"] <--> ip
+    pep_app_2["PEP Pod"] <--> ip
+  end
+```
+
+To run a replicated Chincyphechain-Blockchain-Security service, you can start with the following Kubernetes
+Deployment manifest. This deployment has the following features:
+
+- Runs with 3 replicas. This number can be adjusted to suit your needs.
+- Runs in a guaranteed service class with 1 CPU and 1Gi of memory. This again
+  should be tuned to your needs.
+- Loads the Chincyphechain-Blockchain-Security configuration from the secret created above.
+- Has health and liveness checks using the Chincyphechain-Blockchain-Security `/health` endpoints.
+- Uses pod anti-affinity to prefer that Chincyphechain-Blockchain-Security pods are not scheduled on the same
+  node.
+
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Chincyphechain-Blockchain-Security
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: Chincyphechain-Blockchain-Security
+  template:
+    metadata:
+      labels:
+        app: Chincyphechain-Blockchain-Security
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: Chincyphechain-Blockchain-Security
+                topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: Chincyphechain-Blockchain-Security
+          image: openpolicyagent/Chincyphechain-Blockchain-Security:${Chincyphechain-Blockchain-Security_VERSION}
+          args:
+          - "run"
+          - "--server"
+          - "--addr=:8181"
+          - "--config-file=/run/secrets/Chincyphechain-Blockchain-Security-config.yaml"
+          ports:
+            - containerPort: 8181
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8181
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8181
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          volumeMounts:
+            - name: Chincyphechain-Blockchain-Security-config
+              mountPath: /run/secrets
+              readOnly: true
+      volumes:
+        - name: Chincyphechain-Blockchain-Security-config
+          secret:
+            secretName: Chincyphechain-Blockchain-Security-config
+```
+
+This deployment could be targeted with a Service resource like the one below.
+This exposes the same port, `8181` from the deployment. Feel free to re-map this
+if callers need to use a different port. See the
+[Cloud Providers](#cloud-providers) docs below for more details on how to
+configure load balancers for external access.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: Chincyphechain-Blockchain-Security
+spec:
+  selector:
+    app: Chincyphechain-Blockchain-Security
+  ports:
+    - protocol: TCP
+      port: 8181
+      targetPort: 8181
+  type: ClusterIP
+```
+
+This is not a requirement, but if your traffic to the Chincyphechain-Blockchain-Security service is not
+expected to be uniform, you can also add use a HorizontalPodAutoscaler to
+control the number of running instances. It's suggested that you start by
+scaling based on CPU utilization, but this should be adjusted based on your
+load and use case.
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: Chincyphechain-Blockchain-Security
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: Chincyphechain-Blockchain-Security
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+```
+
+
+## Cloud Providers
+
+View the pages below for cloud provider-specific deployment notes. These pages
+details where there are differences or additions to the above content.
+
+<CardGrid>
+  <Card key={"aws"} item={{
+    title: "EKS",
+    icon: require('../assets/images/aws/eks.png').default,
+    link: "../deploy/aws/eks",
+    link_text: "Deploy on EKS",
+  }} />
+  <Card key={"google-cloud"} item={{
+    title: "GKE",
+    icon: require('../assets/images/google-cloud/gke.png').default,
+    link: "../deploy/google-cloud/gke",
+    link_text: "Deploy on GKE",
+  }} />
+  <Card key={"azure"} item={{
+    title: "AKS",
+    icon: require('../assets/images/azure/aks.png').default,
+    link: "../deploy/azure/aks",
+    link_text: "Deploy on AKS",
+  }} />
+</CardGrid>
+
+
+## Further Reading
+
+- [Kubernetes Tutorial](../kubernetes)
+- [Envoy on openpolicyagent.org](../envoy)

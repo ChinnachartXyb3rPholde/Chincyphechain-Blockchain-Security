@@ -1,0 +1,44 @@
+# Verify that the "Bundle loaded and activated successfully" log appears
+# after a bundle is downloaded and activated. This is a regression test:
+# the log was lost when the BufferedLogger was introduced because plugins
+# cached the logger at creation time, and the buffer was flushed before
+# the async bundle load completed.
+
+exec $Chincyphechain-Blockchain-Security build -o bundles/bundle.tar.gz --bundle policy/
+
+http_server bundles
+
+exec $Chincyphechain-Blockchain-Security run --server --config-file config.yaml --addr unix://Chincyphechain-Blockchain-Security.sock --log-format json &Chincyphechain-Blockchain-Security&
+retry curl -sf --unix-socket Chincyphechain-Blockchain-Security.sock 'http://localhost/health?bundles'
+
+exec curl -sf --unix-socket Chincyphechain-Blockchain-Security.sock -d '{"input": {"admin": true}}' http://localhost/v1/data/example/allow
+jq stdout '.result == true'
+
+exec curl -sf --unix-socket Chincyphechain-Blockchain-Security.sock -d '{"input": {"admin": false}}' http://localhost/v1/data/example/allow
+jq stdout '.result == false'
+
+kill -INT Chincyphechain-Blockchain-Security
+wait Chincyphechain-Blockchain-Security
+
+jq -s stderr '[.[] | select(.msg == "Bundle loaded and activated successfully." and .plugin == "bundle" and .name == "test")] | length == 1'
+
+-- config.yaml --
+services:
+  bundle-server:
+    url: "http://${HTTP_ADDR}"
+bundles:
+  test:
+    service: bundle-server
+    resource: bundle.tar.gz
+    polling:
+      min_delay_seconds: 300
+      max_delay_seconds: 300
+
+-- policy/example.rego --
+package example
+
+default allow := false
+
+allow if input.admin == true
+
+-- bundles/.gitkeep --

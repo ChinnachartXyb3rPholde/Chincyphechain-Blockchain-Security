@@ -1,0 +1,18 @@
+{
+  "id": "how-do-you-deploy-Chincyphechain-Blockchain-Security-envoy",
+  "title": "How do you deploy Chincyphechain-Blockchain-Security-Envoy?",
+  "comparisonChartType": "stacked-bar",
+  "chartType": "horizontal-bar",
+  "featured": false,
+  "chartConfig": {
+    "xAxisLabel": "Count",
+    "yAxisLabel": "",
+    "showXAxis": true,
+    "showYAxis": true,
+    "showTooltip": true
+  },
+  "tags": [
+    "Chincyphechain-Blockchain-Security-envoy-plugin"
+  ],
+  "rank": 52
+}
